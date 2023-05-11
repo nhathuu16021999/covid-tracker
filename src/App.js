@@ -54,7 +54,7 @@ function App() {
         value={selectedCountryId}
       />
       <Highlight report={report} />
-      <Summary report={report} />
+      <Summary selectedCountryId={selectedCountryId} report={report} />
     </Container>
   );
 }

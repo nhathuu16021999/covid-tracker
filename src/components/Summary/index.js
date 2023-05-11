@@ -1,5 +1,6 @@
 import { Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+import { getMapDataByCountryId } from '../../apis';
 import HighMaps from '../Charts/HighMaps';
 import LineChart from '../Charts/LineChart';
 
@@ -8,9 +9,11 @@ export default function Summary({ report, selectedCountryId }) {
 
   useEffect(() => {
     if (selectedCountryId) {
-      import(
-        `@highcharts/map-collection/countries/${selectedCountryId}/${selectedCountryId}-all.geo.json`
-      ).then((res) => setMapData(res));
+      getMapDataByCountryId(selectedCountryId)
+        .then((res) => {
+          setMapData(res);
+        })
+        .catch((err) => console.log({ err }));
     }
   }, [selectedCountryId]);
 

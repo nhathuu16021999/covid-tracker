@@ -46,6 +46,7 @@ const HighMaps = ({ mapData }) => {
   const [configLoaded, setConfigLoaded] = useState(false);
 
   useEffect(() => {
+    console.log({ mapData });
     if (mapData && Object.keys(mapData).length) {
       const fakeData = mapData.features.map((feature, index) => ({
         key: feature.properties['hc-key'],
